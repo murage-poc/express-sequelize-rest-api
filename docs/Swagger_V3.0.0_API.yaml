@@ -1,0 +1,454 @@
+openapi: 3.0.0
+info:
+  title: Express JS + Sequelize API Demo
+  description: >-
+    Node Js project template in typescript using Express framework, JSON Web
+    token authentication and Sequelize ORM
+  contact:
+    email: murage@labskenya.com
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000/api/v1'
+paths:
+  /system/init:
+    post:
+      tags:
+        - Express-backbone
+      summary: initiliaze system database
+      description: 'Seeds the database with initial permissions, roles and user accounts'
+      operationId: initiliazesystemdatabase
+      parameters:
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /session/login/:
+    post:
+      tags:
+        - Express-backbone
+      summary: login
+      description: Authenticate a user account. Returns an access token valid for 1hr
+      operationId: login
+      parameters:
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginRequest'
+            example:
+              username: james
+              password: password
+        required: true
+        x-send-file-in-body: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /permissions:
+    get:
+      tags:
+        - Express-backbone
+      summary: fetch permissions
+      description: Fetch all available permissions from the system database
+      operationId: fetchpermissions
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /permissions/1:
+    get:
+      tags:
+        - Express-backbone
+      summary: fetch permission
+      description: Fetch individual permission using the ID
+      operationId: fetchpermission
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /roles:
+    get:
+      tags:
+        - Express-backbone
+      summary: fetch roles
+      description: Fetch all existing roles for the users
+      operationId: fetchroles
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+    post:
+      tags:
+        - Express-backbone
+      summary: create role
+      description: Create a new user role
+      operationId: createrole
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createroleRequest'
+            example:
+              permissions:
+                - 1
+                - 2
+              name: demo
+              description: a role here
+        required: true
+        x-send-file-in-body: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /roles/1:
+    get:
+      tags:
+        - Express-backbone
+      summary: fetch role
+      description: Fetch role using ID
+      operationId: fetchrole
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /roles/3:
+    patch:
+      tags:
+        - Express-backbone
+      summary: update role
+      description: Update role details
+      operationId: updaterole
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateroleRequest'
+            example:
+              permissions:
+                - 3
+              name: demo
+              description: this is to be renamed
+        required: true
+        x-send-file-in-body: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+    delete:
+      tags:
+        - Express-backbone
+      summary: delete role
+      description: Delete user role by ID
+      operationId: deleterole
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /users:
+    get:
+      tags:
+        - Express-backbone
+      summary: fetch users
+      description: Fetch all user account details
+      operationId: fetchusers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+    post:
+      tags:
+        - Express-backbone
+      summary: create user
+      description: create a new user account record and their authentication info
+      operationId: createuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createuserRequest'
+            example:
+              first_name: James
+              last_name: Jowie
+              role: 1
+              username: jowieyule@gmail.com
+              email: jowieyule@gmail.com
+              password: oJvwie@gmail.com1
+        required: true
+        x-send-file-in-body: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /users/1:
+    get:
+      tags:
+        - Express-backbone
+      summary: fetch user
+      description: Fetch specific user account details by ID
+      operationId: fetchuser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+  /users/2:
+    patch:
+      tags:
+        - Express-backbone
+      summary: update user
+      description: Update user account info by ID (authentication info not updated)
+      operationId: updateuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateuserRequest'
+            example:
+              firstname: Kabaka
+              lastname: M
+              role: 2
+              email: smith@gmail.com
+        required: true
+        x-send-file-in-body: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+    delete:
+      tags:
+        - Express-backbone
+      summary: delete user
+      description: Delete user account by ID ~ replaces user specific data with dummy data
+      operationId: deleteuser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+      deprecated: false
+components:
+  schemas:
+    loginRequest:
+      title: loginRequest
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      example:
+        username: james
+        password: password
+    createroleRequest:
+      title: createroleRequest
+      required:
+        - permissions
+        - name
+        - description
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            type: integer
+            format: int32
+          description: ''
+        name:
+          type: string
+        description:
+          type: string
+      example:
+        permissions:
+          - 1
+          - 2
+        name: demo
+        description: a role here
+    updateroleRequest:
+      title: updateroleRequest
+      required:
+        - permissions
+        - name
+        - description
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            type: integer
+            format: int32
+          description: ''
+        name:
+          type: string
+        description:
+          type: string
+      example:
+        permissions:
+          - 3
+        name: demo
+        description: this is to be renamed
+    createuserRequest:
+      title: createuserRequest
+      required:
+        - first_name
+        - last_name
+        - role
+        - username
+        - email
+        - password
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        role:
+          type: integer
+          format: int32
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        first_name: James
+        last_name: Jowie
+        role: 1
+        username: jowieyule@gmail.com
+        email: jowieyule@gmail.com
+        password: oJvwie@gmail.com1
+    updateuserRequest:
+      title: updateuserRequest
+      required:
+        - firstname
+        - lastname
+        - role
+        - email
+      type: object
+      properties:
+        firstname:
+          type: string
+        lastname:
+          type: string
+        role:
+          type: integer
+          format: int32
+        email:
+          type: string
+      example:
+        firstname: Kabaka
+        lastname: M
+        role: 2
+        email: smith@gmail.com
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+  - httpBearer: []
+tags:
+  - name: Express-backbone
+    description: ''
