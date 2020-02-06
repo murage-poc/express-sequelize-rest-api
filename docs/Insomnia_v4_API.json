@@ -1,0 +1,517 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2020-02-06T16:07:03.221Z",
+  "__export_source": "insomnia.desktop.app:v7.0.6",
+  "resources": [
+    {
+      "_id": "req_f25b24fb10aa461d983348a18be0c26d",
+      "authentication": {},
+      "body": {},
+      "created": 1581000777608,
+      "description": "Seeds the database with initial permissions, roles and user accounts",
+      "headers": [
+        {
+          "description": "",
+          "id": "pair_08caeb9a680140a8a1fbfcfd209c6ec6",
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "description": "",
+          "id": "pair_536902c2394e40b58b3647f28524f26e",
+          "name": "",
+          "value": ""
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1578436164489,
+      "method": "POST",
+      "modified": 1581004869212,
+      "name": "initiliaze system database",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": false,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": false,
+      "settingSendCookies": false,
+      "settingStoreCookies": false,
+      "url": "http://{{host}}:{{port}}/api/v1/system/init",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "created": 1581004196489,
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1581004196490,
+      "modified": 1581004196489,
+      "name": "Express-backbone",
+      "parentId": "wrk_e5c6b703d80d4043bdc84069765afd32",
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_e5c6b703d80d4043bdc84069765afd32",
+      "created": 1578435496594,
+      "description": "",
+      "modified": 1578435496594,
+      "name": "Insomnia",
+      "parentId": null,
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_2b0df4d41e48425cab7f0a8cbf238db0",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"username\":\"james\",\n\t\t\"password\":\"password\"\n}"
+      },
+      "created": 1581004209090,
+      "description": "Authenticate a user account. Returns an access token valid for 1hr",
+      "headers": [
+        {
+          "id": "pair_9ba316b9145a4690b6ef2c11d49e8d54",
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "description": "",
+          "id": "pair_08caeb9a680140a8a1fbfcfd209c6ec6",
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "description": "",
+          "id": "pair_536902c2394e40b58b3647f28524f26e",
+          "name": "",
+          "value": ""
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1578436164476.5,
+      "method": "POST",
+      "modified": 1581004910042,
+      "name": "login",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/session/login/",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8d1b156188ce4912b30c2386f956f9a8",
+      "authentication": {
+        "disabled": true,
+        "token": "{{ token  }}",
+        "type": "bearer"
+      },
+      "body": {
+        "mimeType": "",
+        "text": ""
+      },
+      "created": 1581004288420,
+      "description": "Fetch all available permissions from the system database",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1578436164470.25,
+      "method": "GET",
+      "modified": 1581004938848,
+      "name": "fetch permissions",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/permissions",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e081b1cc927448a9b63092176af50272",
+      "authentication": {
+        "disabled": true,
+        "token": "{{ token  }}",
+        "type": "bearer"
+      },
+      "body": {},
+      "created": 1581004288460,
+      "description": "Fetch individual permission using the ID",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1578436164464,
+      "method": "GET",
+      "modified": 1581004965529,
+      "name": "fetch permission",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/permissions/1",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a406e7d61ff14d74a2ab138e28b118cc",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {},
+      "created": 1581004288433,
+      "description": "Fetch all existing roles for the users",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1578436164389,
+      "method": "GET",
+      "modified": 1581004991962,
+      "name": "fetch roles",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/roles",
+      "_type": "request"
+    },
+    {
+      "_id": "req_78f4f37817454175b883b428f4fddb98",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {},
+      "created": 1581004288462,
+      "description": "Fetch role using ID",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1578436164364,
+      "method": "GET",
+      "modified": 1581005005802,
+      "name": "fetch role",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/roles/1",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e86dbdcb8e60477ba512969f33d0effb",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"permissions\":[1,2],\n\t\"name\":\"demo\",\n\t\"description\":\"a role here\"\n}"
+      },
+      "created": 1581004288453,
+      "description": "Create a new user role",
+      "headers": [
+        {
+          "id": "pair_5d8a58daaf4440ff8c5793a3d99e2fbe",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1578436164339,
+      "method": "POST",
+      "modified": 1581005017231,
+      "name": "create role",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/roles",
+      "_type": "request"
+    },
+    {
+      "_id": "req_404ceb71256345e0a79c47f0b0f8494d",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"permissions\":[3],\n\t\"name\":\"demo\",\n\t\"description\":\"this is to be renamed\"\n}"
+      },
+      "created": 1581004288456,
+      "description": "Update role details",
+      "headers": [
+        {
+          "id": "pair_5d8a58daaf4440ff8c5793a3d99e2fbe",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1578436164289,
+      "method": "PATCH",
+      "modified": 1581005030206,
+      "name": "update role",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/roles/3",
+      "_type": "request"
+    },
+    {
+      "_id": "req_93e62f3478744843a216251317bf886f",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {},
+      "created": 1581004288465,
+      "description": "Delete user role by ID",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1578436164239,
+      "method": "DELETE",
+      "modified": 1581005045219,
+      "name": "delete role",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/roles/3",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b1261ed3ee3b49b299783dc1ee8282f3",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {},
+      "created": 1581004453294,
+      "description": "Fetch all user account details",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1578436164189,
+      "method": "GET",
+      "modified": 1581005055878,
+      "name": "fetch users",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/users",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c38b1799144040daadaf7c2f04204b86",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {},
+      "created": 1581004453298,
+      "description": "Fetch specific user account details by ID",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1578436164139,
+      "method": "GET",
+      "modified": 1581005069586,
+      "name": "fetch user",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/users/1",
+      "_type": "request"
+    },
+    {
+      "_id": "req_bab8f35fc87a408186f176931d3fa021",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"first_name\": \"James\",\n\t\"last_name\": \"Jowie\",\n\t\"role\": 1,\n\"username\":\"jowieyule@gmail.com\",\t\"email\":\"jowieyule@gmail.com\",\n\"password\":\"oJvwie@gmail.com1\"\n}"
+      },
+      "created": 1581004453290,
+      "description": "create a new user account record and their authentication info",
+      "headers": [
+        {
+          "id": "pair_79a0a5fd0ff64428833c0c3edc088f00",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1578436164089,
+      "method": "POST",
+      "modified": 1581005091416,
+      "name": "create user",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/users",
+      "_type": "request"
+    },
+    {
+      "_id": "req_70344f5a603a4045892c33c4a240448c",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"firstname\": \"Kabaka\",\n\t\"lastname\": \"M\",\n\t\"role\": 2,\n\t\"email\":\"smith@gmail.com\"\n}"
+      },
+      "created": 1581004453301,
+      "description": "Update user account info by ID (authentication info not updated)",
+      "headers": [
+        {
+          "id": "pair_79a0a5fd0ff64428833c0c3edc088f00",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1578436164039,
+      "method": "PATCH",
+      "modified": 1581005119662,
+      "name": "update user",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/users/2",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4206c9f1c5044826a97a28758c736a75",
+      "authentication": {
+        "disabled": true,
+        "token": "{{token}}",
+        "type": "bearer"
+      },
+      "body": {},
+      "created": 1581004453304,
+      "description": "Delete user account by ID ~ replaces user specific data with dummy data",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1578436163989,
+      "method": "DELETE",
+      "modified": 1581005152850,
+      "name": "delete user",
+      "parameters": [],
+      "parentId": "fld_24ad30c447af4af7a408c396e800e0b5",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "http://{{host}}:{{port}}/api/v1/users/2",
+      "_type": "request"
+    },
+    {
+      "_id": "env_9b4ab6cbf0f2eeaa5bd5c62151e42901795a2dc9",
+      "color": null,
+      "created": 1578435496670,
+      "data": {},
+      "dataPropertyOrder": null,
+      "isPrivate": false,
+      "metaSortKey": 1578435496670,
+      "modified": 1578435496670,
+      "name": "Base Environment",
+      "parentId": "wrk_e5c6b703d80d4043bdc84069765afd32",
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_9b4ab6cbf0f2eeaa5bd5c62151e42901795a2dc9",
+      "cookies": [],
+      "created": 1578435496676,
+      "modified": 1578435496676,
+      "name": "Default Jar",
+      "parentId": "wrk_e5c6b703d80d4043bdc84069765afd32",
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "env_a01b00eb69734144b81c44f085a1262a",
+      "color": "#7552fc",
+      "created": 1578435620241,
+      "data": {
+        "host": "localhost",
+        "port": 3000,
+        "token": "{% response 'body', 'req_dfaa873bdea74697b48db0559402fbf8', 'b64::JC5yZXN1bHRzLmFjY2Vzc190b2tlbg==::46b', 'no-history' %}"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "host",
+          "port",
+          "token"
+        ]
+      },
+      "isPrivate": false,
+      "metaSortKey": 1578435620241,
+      "modified": 1579453883471,
+      "name": "Dyno",
+      "parentId": "env_9b4ab6cbf0f2eeaa5bd5c62151e42901795a2dc9",
+      "_type": "environment"
+    }
+  ]
+}
