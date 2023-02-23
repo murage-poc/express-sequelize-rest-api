@@ -19,7 +19,7 @@
     "@cesium133/forgjs": "^2.1.4",
     "express": "^4.17.3",
     "jsonwebtoken": "^9.0.0",
-    "sequelize": "^5.22.5",
+    "sequelize": "^6.28.2",
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
